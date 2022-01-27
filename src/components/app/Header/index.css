@@ -1,0 +1,47 @@
+
+.header-main {
+  padding: 40px 20px 20px 20px;
+}
+
+.header-title {
+  margin-top: 4px;
+}
+
+.header-number-of-bags {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-button-grid {
+  display: flex;
+  align-items: center;
+}
+
+.header-box {
+  height: 20px;
+  width: 20px;
+  background-color: #367ef9;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.header-box:hover {
+  opacity: 0.8;
+}
+
+.header-count-box {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.header-hr {
+  border: 0;
+  height: 1px;
+  background-color: rgba(0,0,0,0.1);
+}
