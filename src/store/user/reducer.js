@@ -1,9 +1,9 @@
 import { userActionTypes } from './actions';
 
 const initState = {
-  name: null,
-  email: null,
-  card: null,
+  name: '',
+  email: '',
+  card: '',
   error: false,
   paymentError: false,
 };

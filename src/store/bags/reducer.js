@@ -6,6 +6,7 @@ const initState = {
 };
 
 const bags = (state = initState, action) => {
+  console.log(action.data)
   switch (action.type) {
     case bagsActionTypes.UPDATE_BAGS_COUNT:
       return {

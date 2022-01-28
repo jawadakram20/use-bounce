@@ -22,7 +22,7 @@ function updateBagsCountAction(data) {
   return async (dispatch, getState) => {
     dispatch(updateBagsCount(data))
     const price = data * 5.90;
-    dispatch(updateBagsPrice(price))
+    dispatch(updateBagsPrice(price.toFixed(2)))
   };
 }
 

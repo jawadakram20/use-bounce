@@ -44,7 +44,7 @@ export default function UserInfoHandler() {
           onChange={(e) => {
             handleNameChange(e.target.value);
           }}
-          PlaceHolder="John Doe"
+          placeholder="John Doe"
           className="user-input"
           value={name}
         />
@@ -61,7 +61,7 @@ export default function UserInfoHandler() {
           onChange={(e) => {
             handleEmailChange(e.target.value);
           }}
-          PlaceHolder="john@doe.com"
+          placeholder="john@doe.com"
           className="user-input"
           value={clientEmail}
           onBlur={() => {

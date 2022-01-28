@@ -8,7 +8,7 @@ export default function Footer({ onNext, currentScreenIndex }) {
     ({ user }) => user
   );
   const isDisable = useCallback(() => {
-    if(currentScreenIndex === 0 && bagsCount < 1) {
+    if (currentScreenIndex === 0 && bagsCount < 1) {
       return true;
     }
     if (currentScreenIndex === 1 && (!name || !email)) {
@@ -20,16 +20,16 @@ export default function Footer({ onNext, currentScreenIndex }) {
     return false;
   }, [bagsCount, card, currentScreenIndex, email, error, name]);
 
-  const buttonTitle = useCallback(()=>{
-    if(currentScreenIndex === 2 && paymentError) {
-      return 'Retry'
+  const buttonTitle = useCallback(() => {
+    if (currentScreenIndex === 2 && paymentError) {
+      return "Retry";
     }
-    if(currentScreenIndex === 2 && !paymentError) {
-      return 'Book'
+    if (currentScreenIndex === 2 && !paymentError) {
+      return "Book";
     }
-    return 'Next'
-  },[currentScreenIndex, paymentError])
-  
+    return "Next";
+  }, [currentScreenIndex, paymentError]);
+
   return (
     <div className="footer-main">
       <hr className="hr" />
@@ -43,8 +43,8 @@ export default function Footer({ onNext, currentScreenIndex }) {
         <div
           className={`${
             !isDisable() ? "footer-button" : "footer-button-disable"
-          } body ${paymentError && 'red-background'}`}
-          onClick={!isDisable() && onNext}
+          } body ${paymentError && "red-background"}`}
+          onClick={() => !isDisable() && onNext()}
         >
           {buttonTitle()}
         </div>
