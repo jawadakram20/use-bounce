@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUserEmail, setUserName } from "../../../store/user/actions";
 import useShallowEqualSelector from "../../Hooks/shallowEqualSelector";
+import { validateEmail } from "../../../utils";
 import "./index.css";
 
 export default function UserInfoHandler() {
-  const { name, email } = useShallowEqualSelector(
-    ({ user }) => user
-  );
+  const [clientEmail, setClientEmail] = useState(null);
+  const [error, setError] = useState(null);
+  const { name, email } = useShallowEqualSelector(({ user }) => user);
+  useEffect(() => {
+    if (email) {
+      setClientEmail(email);
+    }
+  }, [email]);
   const dispatch = useDispatch();
 
   function handleNameChange(e) {
@@ -15,7 +21,17 @@ export default function UserInfoHandler() {
   }
 
   function handleEmailChange(e) {
-    dispatch(setUserEmail(e));
+    setClientEmail(e);
+  }
+
+  function submitEmail() {
+    if (validateEmail(clientEmail)) {
+      dispatch(setUserEmail(clientEmail));
+      setError(false);
+    } else {
+      dispatch(setUserEmail(clientEmail));
+      setError(true);
+    }
   }
 
   return (
@@ -35,6 +51,11 @@ export default function UserInfoHandler() {
       </div>
       <div>
         <div className="footnote user-input-container">Email</div>
+        {error && (
+          <div className="footnote user-email-error">
+            Your Email is not valid
+          </div>
+        )}
         <input
           type="email"
           onChange={(e) => {
@@ -42,7 +63,10 @@ export default function UserInfoHandler() {
           }}
           PlaceHolder="john@doe.com"
           className="user-input"
-          value={email}
+          value={clientEmail}
+          onBlur={() => {
+            submitEmail();
+          }}
         />
       </div>
     </div>

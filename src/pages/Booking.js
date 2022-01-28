@@ -5,7 +5,7 @@ import useShallowEqualSelector from "../components/Hooks/shallowEqualSelector";
 import BaseLayout from "../components/layout/BaseLayout";
 import { useNavigate } from "react-router-dom";
 
-const screens = ["userInfo", "payment"];
+const screens = ["selectBags", "userInfo", "payment"];
 
 export default function Booking() {
   const [currentScreenIndex, setCurrentScreen] = useState(0);
@@ -38,6 +38,8 @@ export default function Booking() {
 }
 function BookingScreens({ screen, ...props }) {
   switch (screen) {
+    case "selectBags":
+      return null;
     case "userInfo":
       return <UserInfo {...props} />;
     case "payment":

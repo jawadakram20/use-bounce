@@ -33,3 +33,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+.payment-card-error {
+  color: red;
+  margin-top: 3px;
+}

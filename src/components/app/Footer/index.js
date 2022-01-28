@@ -8,20 +8,23 @@ export default function Footer({ onNext, currentScreenIndex }) {
     ({ user }) => user
   );
   const isDisable = useCallback(() => {
-    if (currentScreenIndex === 0 && (!name || !email)) {
+    if(currentScreenIndex === 0 && bagsCount < 1) {
       return true;
     }
-    if (currentScreenIndex === 1 && (!card || (card && error))) {
+    if (currentScreenIndex === 1 && (!name || !email)) {
+      return true;
+    }
+    if (currentScreenIndex === 2 && (!card || (card && error))) {
       return true;
     }
     return false;
-  }, [card, currentScreenIndex, email, error, name]);
+  }, [bagsCount, card, currentScreenIndex, email, error, name]);
 
   const buttonTitle = useCallback(()=>{
-    if(currentScreenIndex === 1 && paymentError) {
+    if(currentScreenIndex === 2 && paymentError) {
       return 'Retry'
     }
-    if(currentScreenIndex === 1 && !paymentError) {
+    if(currentScreenIndex === 2 && !paymentError) {
       return 'Book'
     }
     return 'Next'
